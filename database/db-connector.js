@@ -1,5 +1,5 @@
 // ./database/db-connector.js
-require('dotenv').config();  // Add this line at the top of your file
+require('dotenv').config();  
 
 // Get an instance of mysql we can use in the app
 var mysql = require('mysql')
