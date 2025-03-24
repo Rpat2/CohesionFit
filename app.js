@@ -1,6 +1,7 @@
 
 
 // App.js
+var PORT = process.env.PORT || 9230;   
 
 var express = require('express');   // We are using the express library for the web server
 
@@ -12,7 +13,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.static('public'))
 
 
-var PORT = process.env.PORT || 9230;                // Set a port number at the top so it's easy to change in the future
+             // Set a port number at the top so it's easy to change in the future
 
 
 // Database
