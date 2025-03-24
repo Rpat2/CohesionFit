@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes and Fitness Tips</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <h1>Classes</h1>
+
+    <div id="Navigation">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/classes">Classes</a>
+           
+        </nav>
+    </div>
+
+    {{!-- Create a table --}}
+    <table id ="classes-table">
+
+        {{!-- Header section --}}
+        <thead>
+
+            {{!-- For just the first row, we print each key of the row object as a header cell so we
+            know what each column means when the page renders --}}
+            <tr>
+                {{#each data.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+            </tr>
+        </thead>
+
+        {{!-- Body section --}}
+        <tbody>
+
+            {{!-- For each row, print the id, fname, lname, homeworld and age, in order --}}
+            {{#each data}}
+            <tr>
+                <td>{{this.classID}}</td>
+                <td>{{this.type}}</td>
+                <td>{{this.classDate}}</td>
+                <td>{{this.classTime}}</td>
+                <td>{{this.cost}}</td>
+                <td>{{this.level}}</td>
+                <td>{{this.trainerID}}</td>
+                <td>{{this.gymID}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+
+  
+
+</body>
+
+
+
+
+
+
+
+

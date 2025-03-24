@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes and Fitness Tips</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <h1>Customers</h1>
+
+    <div id="Navigation">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/customers">Customers</a>
+            <a href="/classes">Classes</a>
+        </nav>
+    </div>
+
+    {{!-- Create a table --}}
+    <table id ="customers-table">
+
+        {{!-- Header section --}}
+        <thead>
+
+            {{!-- For just the first row, we print each key of the row object as a header cell so we
+            know what each column means when the page renders --}}
+            <tr>
+                {{#each customerData.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        {{!-- Body section --}}
+        <tbody>
+
+            {{!-- For each row, print the id, fname, lname, homeworld and age, in order --}}
+            {{#each customerData}}
+            <tr data-value={{this.customerID}}>
+                <td>{{this.customerID}}</td>
+                <td>{{this.firstName}}</td>
+                <td>{{this.lastName}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.phone}}</td>
+                <td>{{this.tier}}</td>
+                <td><button onclick = "deleteCustomer({{this.customerID}})">Delete</button></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <script src="./js/delete_customer.js"></script>
+
+    {{!-- Form to add a record to the table  --}}
+    <h2>Adding Customers with AJAX</h2>
+
+    <p>To add a new person, please enter their information below and click 'Submit'!</p>
+    <form id="add-customer-form-ajax">
+
+        <label for="input-fname">First Name: </label>
+        <input type="text" name="input-fname" id="input-fname">
+        
+        <label for="input-lname">Last Name: </label>
+        <input type="text" name="input-lname" id="input-lname">
+
+        <label for="input-email">Email: </label>
+        <input type="text" name="input-email" id="input-email">
+
+        <label for="input-phone">Phone: </label>
+        <input type="text" name="input-phone" id="input-phone">
+
+        <select name="input-memID" id ="input-memID">
+            <option value = "">Select a Membership</option>
+            {{#each membershipData}}
+            <option value ="{{this.memID}}">{{this.tier}}</option>
+            {{/each}}
+        </select>
+
+        <input type="submit">
+    </form>
+
+    {{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+    <script src="./js/add_customer.js"></script>
+
+
+    <h2>Updating A Customer Form</h2>
+    <p>To add a new person, please enter their information below and click 'Submit'!</p>
+    <form id="update-customer-form-ajax">
+
+        <label for = "input-fullname"> Full Name: </label>
+        <select name = "input-fullname" id = "full-name-selection"> 
+            <option value = "test"> Select a Person</option>
+            {{#each customerData}}
+            <option value = "{{this.customerID}}"> {{this.firstName}} {{this.lastName}}</option>
+            {{/each}}
+        </select>
+       
+        <label for="input-fname">First Name: </label>
+        <input type="text" name="input-fname" id="input-update-fname">
+        
+        <label for="input-lname">Last Name: </label>
+        <input type="text" name="input-lname" id="input-update-lname">
+
+        <label for="input-email">Email: </label>
+        <input type="text" name="input-email" id="input-update-email">
+
+        <label for="input-phone">Phone: </label>
+        <input type="text" name="input-phone" id="input-update-phone">
+
+        <select name="input-memID" id ="input-memID-update">
+            <option value = "">Select a Membership</option>
+            {{#each membershipData}}
+            <option value ="{{this.memID}}">{{this.tier}}</option>
+            {{/each}}
+        </select>
+
+        <input type="submit">
+
+    </form>
+
+    <script src="./js/update_customer.js"></script>
+
+
+
+
+
+
+
+
+  
+
+</body>
+
