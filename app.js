@@ -12,7 +12,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.static('public'))
 
 
-PORT        = 9230;                 // Set a port number at the top so it's easy to change in the future
+var PORT = process.env.PORT || 9230;                // Set a port number at the top so it's easy to change in the future
 
 
 // Database
